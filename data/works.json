@@ -1,9 +1,9 @@
 {
   "profile": {
-    "name": "WANG",
-    "role": "Visual Designer & Creative Developer",
+    "name": "WANGQIAN",
+    "role": "ARCHITECTURE & PARAMETRIC DESIGNER",
     "location": "Suzhou, China",
-    "email": "hello@example.com"
+    "email": "80449857@qq.com"
   },
   "works": [
     {"id":"neon-portal","title":"Neon Portal","category":"Motion","year":"2026","description":"一组围绕时间、速度与空间展开的视觉实验，用环形结构与霓虹轨迹建立强记忆点。","tags":["Motion","Generative","Neon"],"cover":"./assets/samples/sample-01.svg","media":["./assets/samples/sample-01.svg"]},
