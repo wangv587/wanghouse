@@ -1,0 +1,54 @@
+name: Bootstrap portfolio site
+
+on:
+  push:
+    paths:
+      - portfolio-site-v1.zip
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  expand-and-deploy:
+    if: ${{ hashFiles('portfolio-site-v1.zip') != '' }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Expand uploaded archive
+        run: |
+          unzip -o portfolio-site-v1.zip -d source
+          cp -R source/. .
+          rm -rf source portfolio-site-v1.zip
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Add personal portfolio website"
+          git push
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Prepare static site
+        run: |
+          mkdir -p _site
+          cp index.html 404.html .nojekyll site.webmanifest robots.txt _site/
+          cp -R assets data uploads _site/
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
