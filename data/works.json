@@ -1,0 +1,16 @@
+{
+  "profile": {
+    "name": "WANG",
+    "role": "Visual Designer & Creative Developer",
+    "location": "Suzhou, China",
+    "email": "hello@example.com"
+  },
+  "works": [
+    {"id":"neon-portal","title":"Neon Portal","category":"Motion","year":"2026","description":"一组围绕时间、速度与空间展开的视觉实验，用环形结构与霓虹轨迹建立强记忆点。","tags":["Motion","Generative","Neon"],"cover":"./assets/samples/sample-01.svg","media":["./assets/samples/sample-01.svg"]},
+    {"id":"liquid-signal","title":"Liquid Signal","category":"Code","year":"2026","description":"将数据波形转化为流动的视觉语言，探索信息、节奏与情绪之间的关系。","tags":["Creative Code","Data","Audio Reactive"],"cover":"./assets/samples/sample-02.svg","media":["./assets/samples/sample-02.svg"]},
+    {"id":"chrome-bloom","title":"Chrome Bloom","category":"Design","year":"2025","description":"以液态金属和冷色光晕构成未来物件视觉，尝试在柔和与锋利之间寻找平衡。","tags":["Art Direction","3D","Campaign"],"cover":"./assets/samples/sample-03.svg","media":["./assets/samples/sample-03.svg"]},
+    {"id":"afterglow-grid","title":"Afterglow Grid","category":"Photography","year":"2025","description":"数字地平线与真实光线交叠，记录某种介于黄昏和电子梦境之间的状态。","tags":["Photography","Light","Editorial"],"cover":"./assets/samples/sample-04.svg","media":["./assets/samples/sample-04.svg"]},
+    {"id":"soft-machines","title":"Soft Machines","category":"Design","year":"2025","description":"把机械感隐藏在柔软透明的形态里，建立一套带有呼吸感的新视觉系统。","tags":["Visual Identity","Generative","Glass"],"cover":"./assets/samples/sample-05.svg","media":["./assets/samples/sample-05.svg"]},
+    {"id":"prism-stack","title":"Prism Stack","category":"Motion","year":"2024","description":"由透明层次和几何切面组成的动态构图，适合作为品牌片头与空间影像视觉。","tags":["Motion","3D","Typography"],"cover":"./assets/samples/sample-06.svg","media":["./assets/samples/sample-06.svg"]}
+  ]
+}

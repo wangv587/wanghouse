@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="一个可以展示、上传和发布作品的交互式个人作品集。">
+  <meta name="theme-color" content="#08090d">
+  <title>NOVA / Personal Works</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="./site.webmanifest">
+  <link rel="stylesheet" href="./assets/styles.css">
+  <script type="module" src="./assets/app.js"></script>
+</head>
+<body>
+  <div class="page-noise" aria-hidden="true"></div>
+  <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-aura" aria-hidden="true"></div>
+
+  <div class="loader" id="loader" aria-live="polite">
+    <div class="loader-mark"><span>N</span><span>O</span><span>V</span><span>A</span></div>
+    <div class="loader-line"><i></i></div>
+    <p>正在构建你的创意宇宙</p>
+  </div>
+
+  <header class="site-nav" id="site-nav">
+    <a class="brand magnetic" href="#top" aria-label="返回首页">
+      <span class="brand-glyph">N</span>
+      <span class="brand-copy"><b id="brand-name">NOVA</b><br><small>PORTFOLIO</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="#works">作品 <span>01</span></a>
+      <a href="#about">关于 <span>02</span></a>
+      <a href="#contact">联系 <span>03</span></a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-button magnetic" id="theme-toggle" type="button" aria-label="切换明暗主题">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2m0 14v2M3 12h2m14 0h2M5.6 5.6 7 7m10 10 1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/></svg>
+      </button>
+      <button class="nav-cta magnetic" id="open-studio" type="button">
+        <span>上传作品</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-eyebrow reveal"><span class="status-dot"></span><span id="profile-role">CREATIVE PORTFOLIO / 2026</span></div>
+      <div class="hero-title reveal">
+        <div class="hero-line hero-line-one"><span>MAKE</span><span class="outline">IDEAS</span></div>
+        <div class="hero-line hero-line-two"><span class="accent">VISIBLE.</span><span class="hero-orb" aria-hidden="true"><i></i><i></i><i></i></span></div>
+      </div>
+      <div class="hero-bottom">
+        <p class="hero-intro reveal">视觉设计、影像与创意开发。把每一个还不存在的想法，变成可以被看见、被触摸、被记住的作品。</p>
+        <a class="scroll-cue magnetic" href="#works"><span>SCROLL TO EXPLORE</span><i></i></a>
+        <div class="hero-stats reveal"><div><strong id="stat-works">06</strong><span>WORKS</span></div><div><strong>04</strong><span>DISCIPLINES</span></div><div><strong>∞</strong><span>IDEAS</span></div></div>
+      </div>
+      <div class="hero-marquee" aria-hidden="true"><div><span>DESIGN</span><b>✦</b><span>MOTION</span><b>✦</b><span>PHOTOGRAPHY</span><b>✦</b><span>CREATIVE CODE</span><b>✦</b><span>DESIGN</span><b>✦</b><span>MOTION</span><b>✦</b><span>PHOTOGRAPHY</span><b>✦</b><span>CREATIVE CODE</span><b>✦</b></div></div>
+    </section>
+
+    <section class="works-section" id="works">
+      <div class="section-head">
+        <div><p class="section-kicker reveal">SELECTED WORKS <span>01—06</span></p><h2 class="reveal">作品不是终点，<br><em>是下一次灵感的入口。</em></h2></div>
+        <p class="section-copy reveal">点击任意作品进入沉浸式浏览。你可以按类型筛选，也可以从上传面板建立自己的作品档案。</p>
+      </div>
+      <div class="filter-row reveal" id="filter-row" role="tablist" aria-label="作品分类">
+        <button class="filter-chip is-active" type="button" data-filter="all">全部 <span id="all-count">06</span></button>
+        <button class="filter-chip" type="button" data-filter="Design">设计 <span data-count-for="Design">00</span></button>
+        <button class="filter-chip" type="button" data-filter="Motion">动效 <span data-count-for="Motion">00</span></button>
+        <button class="filter-chip" type="button" data-filter="Photography">影像 <span data-count-for="Photography">00</span></button>
+        <button class="filter-chip" type="button" data-filter="Code">创意代码 <span data-count-for="Code">00</span></button>
+      </div>
+      <div class="works-grid" id="works-grid" aria-live="polite"></div>
+      <div class="empty-state" id="empty-state" hidden><span>NO SIGNAL</span><p>这个分类暂时还没有作品。</p></div>
+    </section>
+
+    <section class="manifesto" id="about">
+      <div class="manifesto-index reveal">02 / ABOUT</div>
+      <div class="manifesto-copy"><p class="reveal">我不只制作“好看的画面”。</p><h2 class="reveal">我更在意一个作品<br>进入你的记忆时，<br><span>留下了什么感觉。</span></h2></div>
+      <div class="manifesto-side"><p class="reveal">从概念、视觉、交互到最终上线，我习惯把设计当作一套完整的叙事系统。清晰、有冲击力，也经得起细看。</p><div class="services reveal"><span>01 / Brand & Visual</span><span>02 / Web Experience</span><span>03 / Motion & 3D</span><span>04 / Creative Development</span></div></div>
+      <div class="orbit" aria-hidden="true"><div class="orbit-ring ring-one"></div><div class="orbit-ring ring-two"></div><div class="orbit-core">CREATE<br>WITH<br>INTENT</div></div>
+    </section>
+
+    <section class="upload-cta">
+      <div class="upload-cta-glow" aria-hidden="true"></div>
+      <p class="reveal">READY TO ADD SOMETHING NEW?</p>
+      <h2 class="reveal">把你的下一件作品，<br><span>直接放进这片宇宙。</span></h2>
+      <button class="hero-button magnetic reveal" id="open-studio-secondary" type="button"><span>打开作品上传台</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></button>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact-marquee" aria-hidden="true">LET'S CREATE SOMETHING WORTH REMEMBERING · </div>
+      <div class="contact-grid">
+        <div><p class="section-kicker reveal">03 / CONTACT</p><h2 class="reveal">有一个想法？<br><span>把它发给我。</span></h2></div>
+        <div class="contact-actions reveal"><a href="mailto:hello@example.com" class="contact-mail" id="contact-email">hello@example.com <span>↗</span></a><div class="social-row"><a href="#" aria-label="Instagram">Instagram</a><a href="#" aria-label="Behance">Behance</a><a href="#" aria-label="GitHub">GitHub</a></div></div>
+      </div>
+      <footer><span>© <b id="year"></b> NOVA STUDIO</span><span>DESIGNED WITH INTENT / BUILT FOR THE WEB</span><a href="#top">BACK TO TOP ↑</a></footer>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="作品预览" hidden>
+    <button class="modal-close" id="lightbox-close" type="button" aria-label="关闭预览">×</button>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" type="button" aria-label="上一个作品">←</button>
+    <div class="lightbox-stage">
+      <div class="lightbox-image-wrap"><img id="lightbox-image" alt=""><div class="lightbox-scanline" aria-hidden="true"></div></div>
+      <div class="lightbox-meta"><div><p id="lightbox-category">DESIGN / 2026</p><h3 id="lightbox-title">作品名称</h3></div><p id="lightbox-description"></p><div class="tag-list" id="lightbox-tags"></div></div>
+    </div>
+    <button class="lightbox-nav lightbox-next" id="lightbox-next" type="button" aria-label="下一个作品">→</button>
+  </div>
+
+  <div class="studio" id="studio" role="dialog" aria-modal="true" aria-labelledby="studio-title" hidden>
+    <div class="studio-backdrop" data-close-studio></div>
+    <div class="studio-panel">
+      <header class="studio-header"><div><p>CREATOR CONSOLE / LOCAL + GITHUB</p><h2 id="studio-title">上传新作品</h2></div><button class="modal-close" type="button" data-close-studio aria-label="关闭上传面板">×</button></header>
+      <form id="upload-form" class="studio-form">
+        <div class="form-grid">
+          <label class="field"><span>作品名称</span><input name="title" type="text" placeholder="例如：Neon Memory" required maxlength="80"></label>
+          <label class="field"><span>分类</span><select name="category" required><option value="Design">设计</option><option value="Motion">动效</option><option value="Photography">影像</option><option value="Code">创意代码</option></select></label>
+          <label class="field"><span>年份</span><input name="year" type="text" inputmode="numeric" value="2026" maxlength="4"></label>
+          <label class="field field-wide"><span>作品说明</span><textarea name="description" rows="3" placeholder="用一两句话说明这个作品的思路。" maxlength="320"></textarea></label>
+          <label class="field field-wide"><span>标签（用逗号分隔）</span><input name="tags" type="text" placeholder="Branding, Web, Motion" maxlength="160"></label>
+        </div>
+        <label class="dropzone" id="dropzone"><input type="file" id="work-files" name="files" accept="image/*" multiple><span class="dropzone-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0L7 9m5-5 5 5M5 14v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/></svg></span><strong>拖拽图片到这里，或点击选择</strong><small>支持 JPG / PNG / WebP。发布时会自动压缩并保留清晰度。</small></label>
+        <div class="file-preview" id="file-preview"></div>
+        <details class="github-settings"><summary><span><i class="github-dot"></i> GitHub 发布设置</span><span>可选</span></summary><div class="github-fields"><label class="field"><span>仓库所有者</span><input name="owner" type="text" placeholder="your-github-name"></label><label class="field"><span>仓库名称</span><input name="repo" type="text" placeholder="portfolio"></label><label class="field"><span>分支</span><input name="branch" type="text" value="main"></label><label class="field"><span>发布路径</span><input name="basePath" type="text" value=""></label><label class="field field-wide"><span>细粒度访问令牌</span><input name="token" type="password" autocomplete="off" placeholder="只保存在当前浏览器标签页"></label><p class="security-note">建议创建仅限该仓库、仅 Contents 读写权限的 Fine-grained token。关闭标签页后会自动清除。</p></div></details>
+        <div class="publish-status" id="publish-status" aria-live="polite"><span></span><p>等待上传</p></div>
+        <div class="studio-actions"><button class="button-secondary magnetic" id="save-local" type="submit"><span>保存到本机</span></button><button class="button-primary magnetic" id="publish-github" type="button"><span>发布到 GitHub</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></button></div>
+      </form>
+    </div>
+  </div>
+  <div class="toast-stack" id="toast-stack" aria-live="polite"></div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+{ "name": "NOVA Personal Portfolio", "short_name": "NOVA", "description": "Interactive personal portfolio with local and GitHub publishing.", "start_url": "./", "display": "standalone", "background_color": "#08090d", "theme_color": "#08090d", "icons": [{ "src": "./assets/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }] }
