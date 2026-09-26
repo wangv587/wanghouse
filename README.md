@@ -29,3 +29,7 @@
 上传面板支持本地保存和 GitHub 发布。GitHub 模式需要填写 owner、repo、branch、basePath 和 Fine-grained token。Token 建议仅授权当前仓库的 Contents 读写权限，并且只保存在浏览器 `sessionStorage` 中。
 
 不要把 token 写进任何项目文件、截图或公开页面。
+
+## 部署状态
+
+站点文件已经清空初始化并写入仓库，GitHub Actions 将负责构建和发布。
